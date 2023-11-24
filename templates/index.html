@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+
+        body,
+        h1, h2, h3, legend {
+            margin: 0;
+            padding: 0;
+        }
+        #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        body {
+            font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        h1, h2 {
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        /* ==========================================================================
+        #SPACING FOR SUBMIT BUTTON
+        ========================================================================== */
+
+        .p-t-100 {
+            padding-top: 100px;
+        }
+
+        .p-t-20 {
+            padding-top: 20px;
+        }
+
+        .p-b-100 {
+            padding-bottom: 100px;
+        }
+
+        /* ==========================================================================
+        #FIT INPUT BOX IN CENTER
+        ========================================================================== */
+        .wrapper {
+            padding-top: 70px;
+            margin: 0 auto;
+        }
+
+        .wrapper--w680 {
+            max-width: 680px;
+        }
+
+        /* ==========================================================================
+        # GET RECOMMENDATIONS BUTTON
+        ========================================================================== */
+        .btn {
+            line-height: 40px;
+            display: inline-block;
+            padding: 0 25px;
+            cursor: pointer;
+            font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+            color: #fff;
+            -webkit-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: none;
+        }
+
+        .btn--radius {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 10px;
+            border: 0px ;
+        }
+
+        .btn--green {
+            background: #57b846;
+        }
+
+            .btn--green:hover {
+                background: #4dae3c;
+            }
+
+        .btn:disabled{
+           background-color:gray;
+}
+                .btn:enabled{
+           background-color:#57b846;
+}
+
+        /* ==========================================================================
+        #TITLE
+        ========================================================================== */
+        .title {
+          margin-bottom: 10px;
+          font-size: 30px;
+          margin:5px;
+          margin-right:150px;
+          font-family:arial;
+        }
+
+        /* ==========================================================================
+        #CARD FOR ENTERING USER PREFERENCES
+        ========================================================================== */
+        .card {
+              overflow: hidden;
+              position: relative;
+              margin-top: 90px;
+              -webkit-border-radius: 3px;
+              -moz-border-radius: 3px;
+              border-radius: 20px;
+              background: #FFFFFF;
+              box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+              backdrop-filter: blur(3px);
+              background-color: rgba(155, 155, 155, 0.3);
+              padding-top: 0px;
+        }
+
+
+
+        .card-1 .card-body {
+             padding: 0 70px;
+             padding-top:  10px;
+             padding-bottom: 15px;
+             background: #1a1a1a;
+             box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+             backdrop-filter: blur(3px);
+             background-color: rgba(255, 255, 255, 0.2);
+        }
+        /* styling navlist */
+		#navlist {
+			width: 100%;
+		}
+
+		/* styling navlist anchor element */
+		    #navlist a {
+			float:left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 12px;
+			text-decoration: none;
+			font-size: 15px;
+		}
+		.navlist-right{
+			float:right;
+		}
+
+		/* hover effect of navlist anchor element */
+		#navlist a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+    </style>
+    <style>
+
+        /* ==========================================================================
+        #BACKGROUNG IMAGE
+        ========================================================================== */
+
+        :root {
+            --gap-line-spacing: 5px;
+            --gap-line-spacing-authors: 2px;
+            --darkest-color-titles: #545454;
+            --main-text-color: #003057;
+            --light-color-section-banner-bkg: #B3A369;
+            --top-banner-color: #B3A369;
+            --gap-line-spacing-company: 2px;
+            --page-background-color: #ffffff;
+            --table-border-color: #B3A369;
+            --section-banner-text-color: #003057;
+            --font-my-theme: Helvetica;
+            --gap-right-before-links: 2em;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+
+        }
+        .header {
+            display: block;
+            margin: 0 auto;
+            width: 150%;
+            max-width: 100%;
+            box-shadow: none;
+            background-color: rgba(255,255,255,0.5);
+            position: fixed;
+            height: 100px!important;
+            overflow: hidden;
+            z-index: 10;
+            text-align: center;
+
+        }
+       .main {
+            margin: 0 auto;
+            display: block;
+            height: 100%;
+            margin-top: 60px;
+        }
+       .mainInner{
+            display: table;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+       }
+       .mainInner div{
+           display:table-cell;
+           vertical-align: middle;
+           font-size: 3em;
+           font-weight: bold;
+           letter-spacing: 1.25px;
+       }
+       #sidebarMenu {
+          height: 100%;
+          position: fixed;
+          left: 0;
+          width: 250px;
+          margin-top: 100px;
+          transform: translateX(-250px);
+          transition: transform 250ms ease-in-out;
+          background-color: rgba(255,255,255,0.5);
+    
+        }
+        .sidebarMenuInner{
+           margin:0;
+           border-top: 1px solid rgba(255, 255, 255, 0.10);
+           padding-top: 20px;
+        }
+        .sidebarMenuInner li{
+            list-style: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+        }
+        .sidebarMenuInner li span{
+            display: block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.50);
+        }
+        .sidebarMenuInner li a{
+             color: #0047AB;
+             text-transform: uppercase;
+             font-weight: bold;
+             cursor: pointer;
+             text-decoration: none;
+        }
+        input[type="checkbox"]:checked ~ #sidebarMenu {
+             transform: translateX(0);
+        }
+
+        input[type=checkbox] {
+           transition: all 0.3s;
+           box-sizing: border-box;
+           display: none;
+        }
+        .sidebarIconToggle {
+          transition: all 0.3s;
+          box-sizing: border-box;
+          cursor: pointer;
+            position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+        .bg {
+
+            background-image: url('/static/backg.jpeg');
+            background-position: center-center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+
+            .selbox select {
+                background-color: #fafafa;
+                color: black;
+                padding: 6px;
+                width: 120pt;
+                border-radius: 10px;
+              /*  #font-size: 20px;*/
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+                -webkit-appearance: button;
+                appearance: button;
+                outline: none;
+            }
+
+
+        .title {
+            color: var(--main-text-color);
+            font-family: Arial, Helvetica, sans-serif;font-size: 50px;
+        }
+    </style>
+
+    <style>
+
+        .container .box {
+            display: flex;
+            flex-direction: row;
+        }
+
+            .container .box .box-cell.box1 {
+                width: 80%;
+                background: white;
+                color: black;
+                text-align: justify;
+                text-shadow: 0.1px 0.1px 0.1px #000;
+                backdrop-filter: blur(0px);
+                background-color: rgba(255, 255, 255, 0);
+            }
+
+            .container .box .box-cell.box2 {
+                width: 30%;
+                background: white;
+                text-align: justify;
+                text-shadow: 0.1px 0.1px 0.1px #000;
+                backdrop-filter: blur(0px);
+                background-color: rgba(255, 255, 255, 0);
+            }
+    </style>
+
+    <style>
+
+        .title_label {
+            color: var(--main-text-color);
+        }
+
+        .imp_td {
+            text-align: center;
+            padding-left: 10pt;
+            width:35%;
+        }
+
+        .imp_td_text {
+            text-align: left;
+            padding-left: 1em;
+            width: 10%;
+        }
+        .image {
+             background-size: 500px;
+             background-color: transparent;
+             width: 500px;
+             height: 90px;
+             position: absolute;
+             top:2%;
+             right: 33%;
+       }
+
+    </style>
+
+</head>
+
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="/static/video.mp4" type="video/mp4"/>
+      </video>
+
+    <div class="header">
+        <img align="center" class="image" src="/static/logo.png" border="0" alt="Logo"></>
+
+    </div>
+
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a href = "/">Home</a></li>
+      <li><a href = "about">About</a></li>
+      <li><a href = "team">The Team</a></li>
+
+    </ul>
+  </div>
+    <div class="bg">
+       <!-- <div id="navlist">
+	    	<a href="/">Home</a>
+        <a href="visuals.html">Visuals</a>
+            <a href="About.html">About</a>
+            <img align="center" class="image" src="/static/logo.png" border="0" alt="Logo"></>
+            <br /><br /><br />
+
+       </div> -->
+
+
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <form  action="{{ url_for("predict")}}" method="POST">
+                        <table style="width:100%; vertical-align:middle;">
+                            <tr style="text-align:center">
+                                <td colspan="2" class="title_label" style="font-size:large"><b></b></td>
+                            </tr>
+                                <td style="padding-bottom: 16pt; padding-top: 16pt;vertical-align:middle">
+
+                                    <textarea name="text" rows="10" cols="64">Enter Text
+                                    </textarea>
+                                </td>
+
+
+
+
+                          <tr>
+                                <td colspan="4" style="text-align:center">
+                                    <div class="p-t-20"><button id="GetRec" class="btn btn--radius .btn--green" type="submit">Check if Real or Fake</button></div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<!-- end document-->
